@@ -22,7 +22,7 @@
         <div class="posts">
 
 
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <div class="post">
                     <div class="post-header">
                         <div class="meta">
@@ -44,7 +44,11 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+
+            @empty
+                <div class="meta">No publications found..</div>
+
+            @endforelse
 
 
         </div>

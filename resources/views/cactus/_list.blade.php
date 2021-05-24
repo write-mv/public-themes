@@ -25,7 +25,7 @@
         <span class="h2">Most recent</span>
 
         <ul class="post-list">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <li class="post-item">
                     <div class="meta"><time itemprop="datePublished">{{ $post->published_date->format('Y-m-d') }}</time>
                     </div>
@@ -33,7 +33,13 @@
                             href="{{ route('posts.show', ['name' => $blog->name, 'post' => $post->slug]) }}">{{ $post->title }}</a></span>
                 </li>
 
-            @endforeach
+            @empty  
+
+            <li class="post-item">
+                <div class="meta">No publications found..</div>
+            </li>
+
+            @endforelse
 
 
         </ul>

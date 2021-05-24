@@ -24,7 +24,7 @@
     </div>
     <div class="flex flex-col lg:grid lg:gap-4 2xl:gap-6 2xl:pb-8 ml-2 pt-4 px-6">
   
-      @foreach ($posts as $post)
+      @forelse ($posts as $post)
   
       @if($post->is_english)
       <!-- start Card -->
@@ -77,8 +77,12 @@
       </a>
       <!-- End card-->
       @endif
+
+      @empty
+
+      <p class="text-center text-gray-500 text-md">No publications found...</p>
   
-      @endforeach
+      @endforelse
   
   
       <div class="mt-12">
