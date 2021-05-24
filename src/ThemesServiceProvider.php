@@ -14,10 +14,7 @@ class ThemesServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'themes');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'themes');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'themes');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -25,19 +22,14 @@ class ThemesServiceProvider extends ServiceProvider
             ], 'config');
 
             // Publishing the views.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/views' => resource_path('views/vendor/themes'),
-            ], 'views');*/
+            ], 'views');
 
             // Publishing assets.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/assets' => public_path('vendor/themes'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/themes'),
-            ], 'lang');*/
+            ], 'assets');
 
             // Registering package commands.
             // $this->commands([]);
@@ -51,10 +43,5 @@ class ThemesServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'themes');
-
-        // Register the main class to use with the facade
-        $this->app->singleton('themes', function () {
-            return new Themes;
-        });
     }
 }
