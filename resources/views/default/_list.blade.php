@@ -1,4 +1,4 @@
-@extends('themes.default._layout')
+@extends('themes::default._layout')
 
 @section('meta')
 <meta name="title" content="{{$blog->site_title}}">

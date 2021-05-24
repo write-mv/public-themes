@@ -1,4 +1,4 @@
-@extends('themes.default._layout')
+@extends('themes::default._layout')
 
 @section('meta')
 <meta data-rh="true" property="al:android:app_name" content="Medium" />
