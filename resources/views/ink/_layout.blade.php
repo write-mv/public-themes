@@ -5,7 +5,7 @@
     <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {!! SEO::generate() !!}
+    {{ seo()->render() }}
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" media="screen"
         href="https://themes.gohugo.io//theme/hugo-ink/css/normalize.css" />
