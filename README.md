@@ -11,16 +11,8 @@ composer require write-mv/themes
 
 Currently under development.
 
-## Contributing
+## todo
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-
-## Credits
-
--   [Mohamed Jinas](https://github.com/write-mv)
--   [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+- [ ] Add a screenshot to each theme
+- [ ] Add comment partial to the themes
+- [ ] Fix paginations for all the themes
