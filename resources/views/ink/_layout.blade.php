@@ -33,10 +33,9 @@
                 </p>
                 <nav class="nav social">
                     <ul class="flat">
-                        <li><a href="https://github.com/knadh/hugo-ink" title="Github"><i data-feather="github"></i></a>
-                        </li>
-                        <li><a href="https://themes.gohugo.io//theme/hugo-ink/index.xml" title="RSS"><i
+                        <li><a href="/{{$blog->name}}/feed" title="RSS"><i
                                     data-feather="rss"></i></a></li>
+                                     
                         <li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li>
                     </ul>
                 </nav>
@@ -46,7 +45,7 @@
                 <ul class="flat">
 
                     <li>
-                        <a href="https://themes.gohugo.io//theme/hugo-ink/">Home</a>
+                        <a href="{{ route('posts.index', $blog->name) }}">Home</a>
                     </li>
 
 
