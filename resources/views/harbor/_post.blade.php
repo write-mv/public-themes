@@ -24,24 +24,7 @@
 
             {!! $post->getRenderedHtmlContent() !!}
 
-            <div class="blog-tags">
-
-                <a href="https://themes.gohugo.io/theme/harbor/tags/markdown/">markdown</a>&nbsp;
-
-                <a href="https://themes.gohugo.io/theme/harbor/tags/css/">css</a>&nbsp;
-
-                <a href="https://themes.gohugo.io/theme/harbor/tags/html/">html</a>&nbsp;
-
-                <a href="https://themes.gohugo.io/theme/harbor/tags/themes/">themes</a>&nbsp;
-
-            </div>
-
         </article>
-
-
-
-
-
     </div>
 
 @endsection
