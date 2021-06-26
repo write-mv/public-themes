@@ -24,7 +24,7 @@
     <div class="content index py4">
 
         <header id="header">
-            <a href="{{ route('posts.index', $blog->name) }}">
+            <a href="{{ route('domain.posts.index', $blog->name) }}">
 
                 <div id="logo"
                     style="background-image: url(https://themes.gohugo.io/theme/hugo-theme-cactus/images/logo.png)">
@@ -40,7 +40,7 @@
                         <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
                     </li>
 
-                    <li><a href="{{ route('posts.index', $blog->name) }}">Home</a></li>
+                    <li><a href="{{ route('domain.posts.index', $blog->name) }}">Home</a></li>
 
 
 
