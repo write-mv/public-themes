@@ -12,7 +12,7 @@
   
       @if($post->is_english)
       <!-- start Card -->
-      <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
+      <a href="{{route('domain.posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
         class="lg:order-1 shadow-sm lg:row-span-1 2xl:row-span-1 lg:col-span-2 rounded-lg  mb-5 lg:mb-0 border border-gray-400 hover:shadow-lg" style="background-color:#F9F4F0;">
         <div class="mx-6 my-8 mt-10">
           <h2 class="text-black text-opacity-50 text-md md:text-base 2xl:text-2xl 2xl:my-2 ml-1 sm:ml-5" style="font-family: Poppins;">
@@ -38,7 +38,7 @@
       @else
   
       <!-- start Card -->
-      <a href="{{route('posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
+      <a href="{{route('domain.posts.show', ['name' => $blog->name ,'post' => $post->slug])}}"
         class="lg:order-1 shadow-sm lg:row-span-1 2xl:row-span-1 lg:col-span-2 rounded-lg  mb-5 lg:mb-0 border border-gray-400 hover:shadow-lg" style="background-color:#F9F4F0;">
         <div class="mx-6 my-8 mt-10">
           <h2 class="text-black text-opacity-70 text-md 2xl:my-2 ml-1 sm:ml-5 typer"  dir="rtl">
