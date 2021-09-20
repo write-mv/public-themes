@@ -1,6 +1,5 @@
 @extends('themes::default._layout')
 @section('content')
-    <div class="container w-full px-4 py-24 mx-auto md:w-3/4 lg:w-2/4">
         <div class="mt-10 mb-12 text-center">
             <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900 hover:underline"
                 style="font-family: Poppins;"> {{ $tag->name }}</h2>
@@ -76,6 +75,5 @@
                         {{ $posts->links() }}
                     </div>
                 </div>
-            </div>
 
         @endsection

@@ -1,11 +1,6 @@
 @extends('themes::default._layout')
 @section('content')
     <div class="container mx-auto">
-        <div class="mt-10 mb-12 text-center">
-            <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900" style="font-family: Poppins;">
-                {{ $blog->site_title }}</h2>
-            <p class="text-lg text-gray-500" style="font-family: Poppins;">{{ $blog->description }}</p>
-        </div>
         <div class="p-6 mt-6">
             <h2 class="text-2xl font-bold text-gray-600">
                 Tags
