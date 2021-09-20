@@ -13,9 +13,9 @@
                 </h1>
             @endif
 
-            <p class="text-gray-700">
+            <p>
                 @if ($post->show_author)
-                    <div>
+                    <div class="text-gray-600 text-sm">
                         Written by
                         <span class="byline author vcard" itemprop="author" itemscope="itemscope"
                             itemtype="http://schema.org/Person">
@@ -27,20 +27,18 @@
                 @endif
 
                 @if ($post->is_english)
-                    <time itemprop="datePublished dateModified" datetime="{{ $post->published_date->format('F d, Y') }}"
+                    <time itemprop="datePublished dateModified" class="text-gray-600 text-sm"
+                        datetime="{{ $post->published_date->format('F d, Y') }}"
                         pubdate>{{ $post->published_date->format('F d, Y') }}</time>
 
                 @else
-                    <time itemprop="datePublished dateModified" class="faseyha" dir="rtl">
+                    <time itemprop="datePublished dateModified" class="faseyha text-gray-600 text-sm" dir="rtl">
                         {{ $post->published_date->locale('dv')->isoFormat('Do MMMM YYYY') }}
                     </time>
                 @endif
-            <div class="flex items-center text-gray-500 mt-5">
+            <div class="text-gray-500 mt-5">
                 @foreach ($post->tags as $tag)
-                    <a href="{{ route('domain.tags.show', [
-    'name' => $blog->name,
-    'tag' => $tag->slug,
-]) }}"
+                    <a href="{{ route('domain.tags.show', ['name' => $blog->name, 'tag' => $tag->slug]) }}"
                         class="text-xs font-light hover:underline cursor-pointer @if (!$loop->first) ml-2 @endif">
                         #{{ $tag->name }}</a>
                 @endforeach
