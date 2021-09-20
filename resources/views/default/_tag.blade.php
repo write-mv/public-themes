@@ -4,7 +4,6 @@
         <div class="mt-10 mb-12 text-center">
             <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900 hover:underline"
                 style="font-family: Poppins;"> {{ $tag->name }}</h2>
-            <p class="text-lg text-gray-500" style="font-family: Poppins;">{{ $blog->description }}</p>
         </div>
         <div class="p-6 mt-6">
             <div class="flex flex-col lg:grid lg:gap-4 2xl:gap-6 2xl:pb-8 ml-2 pt-4 px-6">
