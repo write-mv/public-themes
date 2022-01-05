@@ -1,4 +1,4 @@
-@extends('themes::default._layout')
+@extends('themes::themes.default._layout')
 @section('content')
     <article class="container px-4 py-24 mx-auto" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
         <div class="w-full mx-auto mb-12 text-center md:w-2/3">
@@ -65,5 +65,9 @@
                 {!! $post->getRenderedHtmlContent() !!}
             </div>
         @endif
+
+        <livewire:themes-like-button :post="$post" />
+
+        
     </article>
 @endsection

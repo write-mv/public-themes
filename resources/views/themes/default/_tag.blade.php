@@ -1,4 +1,4 @@
-@extends('themes::default._layout')
+@extends('themes::themes.default._layout')
 @section('content')
         <div class="mt-10 mb-12 text-center">
             <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900 hover:underline"

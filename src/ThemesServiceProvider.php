@@ -3,45 +3,126 @@
 namespace WriteMv\Themes;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Support\Facades\Blade;
+use WriteMv\Themes\Components\LivewireComponent;
+use WriteMv\Themes\Components\BladeComponent;
+use Illuminate\Support\Str;
+use WriteMv\Themes\Console\PublishCommand;
+use Livewire\Livewire;
 
-class ThemesServiceProvider extends ServiceProvider
+final class ThemesServiceProvider extends ServiceProvider
 {
+
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/themes.php', 'themes');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                PublishCommand::class,
+            ]);
+        }
+    }
+
+
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
+    {
+
+        $this->bootResources();
+        $this->bootBladeComponents();
+        $this->bootLivewireComponents();
+        $this->bootDirectives();
+        $this->bootPublishing();
+    }
+
+    private function bootResources(): void
     {
         /*
          * Optional methods to load your package assets
          */
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'themes');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'themes');
+    }
 
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('themes.php'),
-            ], 'config');
+    private function bootBladeComponents(): void
+    {
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+            $prefix = config('themes.prefix', '');
+            $assets = config('themes.assets', []);
 
-            // Publishing the views.
-            $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/themes'),
-            ], 'views');
+            /** @var BladeComponent $component */
+            foreach (config('themes.components', []) as $alias => $component) {
+                $blade->component($component, $alias, $prefix);
 
-            // Publishing assets.
-            $this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/themes'),
-            ], 'assets');
+                $this->registerAssets($component, $assets);
+            }
+        });
+    }
 
-            // Registering package commands.
-            // $this->commands([]);
+    private function bootLivewireComponents(): void
+    {
+        // Skip if Livewire isn't installed.
+        if (!class_exists(Livewire::class)) {
+            return;
+        }
+
+        $prefix = config('themes.prefix', '');
+        $assets = config('themes.assets', []);
+
+        /** @var LivewireComponent $component */
+        foreach (config('themes.livewire', []) as $alias => $component) {
+            $alias = $prefix ? "$prefix-$alias" : $alias;
+            
+
+            Livewire::component($alias, $component);
+
+            $this->registerAssets($component, $assets);
         }
     }
 
-    /**
-     * Register the application services.
-     */
-    public function register()
+    private function registerAssets($component, array $assets): void
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'themes');
+        foreach ($component::assets() as $asset) {
+            $files = (array) ($assets[$asset] ?? []);
+
+            collect($files)->filter(function (string $file) {
+                return Str::endsWith($file, '.css');
+            })->each(function (string $style) {
+                Theme::addStyle($style);
+            });
+
+            collect($files)->filter(function (string $file) {
+                return Str::endsWith($file, '.js');
+            })->each(function (string $script) {
+                Theme::addScript($script);
+            });
+        }
+    }
+
+    private function bootDirectives(): void
+    {
+        Blade::directive('themeStyles', function (string $expression) {
+            return "<?php echo WriteMv\\Themes\\Theme::outputStyles($expression); ?>";
+        });
+
+        Blade::directive('themeScripts', function (string $expression) {
+            return "<?php echo WriteMv\\Themes\\Theme::outputScripts($expression); ?>";
+        });
+    }
+
+    private function bootPublishing(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/themes.php' => $this->app->configPath('themes.php'),
+            ], 'themes-config');
+
+            $this->publishes([
+                __DIR__ . '/../resources/views' => $this->app->resourcePath('views/vendor/themes'),
+            ], 'themes-views');
+        }
     }
 }

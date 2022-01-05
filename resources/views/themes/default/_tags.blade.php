@@ -1,4 +1,4 @@
-@extends('themes::default._layout')
+@extends('themes::themes.default._layout')
 @section('content')
     <div class="container mx-auto">
         <div class="p-6 mt-6">

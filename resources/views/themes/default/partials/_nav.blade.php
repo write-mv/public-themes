@@ -16,10 +16,6 @@
         </div>
         <div class="sm:flex flex-col md:flex-row hidden md:block -mx-2">
             <a href="{{ route('domain.posts.index', ['name' => $blog->name]) }}" class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2">Home</a>
-
-            @foreach ($pages as $page)
-            <a href="{{ route('pages.show', ['name' => $blog->name, 'page' => $page->id]) }}" class="text-gray-800 rounded hover:bg-gray-900 hover:text-gray-100 hover:font-medium py-2 px-2 md:mx-2">{{ $page->title }}</a>
-            @endforeach
         </div>
     </div>
 </nav>
