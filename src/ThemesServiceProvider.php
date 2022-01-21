@@ -2,21 +2,20 @@
 
 namespace WriteMv\Themes;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Support\Facades\Blade;
-use WriteMv\Themes\Components\LivewireComponent;
-use WriteMv\Themes\Components\BladeComponent;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use WriteMv\Themes\Console\PublishCommand;
+use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
+use WriteMv\Themes\Components\BladeComponent;
+use WriteMv\Themes\Components\LivewireComponent;
+use WriteMv\Themes\Console\PublishCommand;
 
 final class ThemesServiceProvider extends ServiceProvider
 {
-
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/themes.php', 'themes');
+        $this->mergeConfigFrom(__DIR__.'/../config/themes.php', 'themes');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -25,13 +24,11 @@ final class ThemesServiceProvider extends ServiceProvider
         }
     }
 
-
     /**
      * Bootstrap the application services.
      */
     public function boot(): void
     {
-
         $this->bootResources();
         $this->bootBladeComponents();
         $this->bootLivewireComponents();
@@ -44,7 +41,7 @@ final class ThemesServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'themes');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'themes');
     }
 
     private function bootBladeComponents(): void
@@ -75,7 +72,6 @@ final class ThemesServiceProvider extends ServiceProvider
         /** @var LivewireComponent $component */
         foreach (config('themes.livewire', []) as $alias => $component) {
             $alias = $prefix ? "$prefix-$alias" : $alias;
-            
 
             Livewire::component($alias, $component);
 
@@ -117,11 +113,11 @@ final class ThemesServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/themes.php' => $this->app->configPath('themes.php'),
+                __DIR__.'/../config/themes.php' => $this->app->configPath('themes.php'),
             ], 'themes-config');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => $this->app->resourcePath('views/vendor/themes'),
+                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/themes'),
             ], 'themes-views');
         }
     }

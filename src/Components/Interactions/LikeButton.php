@@ -2,15 +2,14 @@
 
 namespace WriteMv\Themes\Components\Interactions;
 
+use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cookie;
-use WriteMv\Themes\Components\LivewireComponent;
 use Ramsey\Uuid\Uuid;
-use App\Models\Post;
+use WriteMv\Themes\Components\LivewireComponent;
 
 class LikeButton extends LivewireComponent
 {
-
     public Post $post;
 
     public ?string $likerUuid = null;

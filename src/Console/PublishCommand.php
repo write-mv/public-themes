@@ -32,7 +32,7 @@ final class PublishCommand extends Command
         $components = config('themes.components');
         $alias = $this->argument('component');
 
-        if (! $component = $components[$alias] ?? null) {
+        if (!$component = $components[$alias] ?? null) {
             $this->error("Cannot find the given [$alias] component.");
 
             return 1;
@@ -41,12 +41,12 @@ final class PublishCommand extends Command
         $class = str_replace('WriteMv\\Themes\\Components\\', '', $component);
         $view = str_replace(['_', '.-'], ['-', '/'], Str::snake(str_replace('\\', '.', $class))).'.blade.php';
 
-        if ($this->option('view') || ! $this->option('class')) {
+        if ($this->option('view') || !$this->option('class')) {
             $originalView = __DIR__.'/../../resources/views/components/'.$view;
             $publishedView = $this->laravel->resourcePath('views/vendor/themes/components/'.$view);
             $path = Str::beforeLast($publishedView, '/');
 
-            if (! $this->option('force') && $filesystem->exists($publishedView)) {
+            if (!$this->option('force') && $filesystem->exists($publishedView)) {
                 $this->error("The view at [$publishedView] already exists.");
 
                 return 1;
@@ -59,11 +59,11 @@ final class PublishCommand extends Command
             $this->info('Successfully published the component view!');
         }
 
-        if ($this->option('class') || ! $this->option('view')) {
+        if ($this->option('class') || !$this->option('view')) {
             $path = $this->laravel->basePath('app/View/Components');
             $destination = $path.'/'.str_replace('\\', '/', $class).'.php';
 
-            if (! $this->option('force') && $filesystem->exists($destination)) {
+            if (!$this->option('force') && $filesystem->exists($destination)) {
                 $this->error("The class at [$destination] already exists.");
 
                 return 1;
