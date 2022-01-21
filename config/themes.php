@@ -2,7 +2,6 @@
 
 use WriteMv\Themes\Components;
 
-
 return [
 
     /*
@@ -16,7 +15,16 @@ return [
     |
     */
 
-    'components' => [],
+    'components' => [
+
+        //Root Components
+        'last-seen' => Components\LastSeen::class,
+
+
+        //Layout components
+        'theme-layout' => Components\Layouts\ThemeLayout::class,
+        'footer' => Components\Layouts\Footer::class,
+    ],
 
 
     /*

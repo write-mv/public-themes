@@ -1,10 +1,20 @@
-@extends('themes::themes.default._layout')
-@section('content')
-    <div class="container mx-auto">
-        <div class="p-6 mt-6">
-            <h2 class="text-2xl font-bold text-gray-600">
-                Tags
-            </h2>
+<x-themes-theme-layout>
+    <article class="max-w-4xl mx-auto px-6 pt-24 pb-16">
+
+        <header class="text-ink">
+            <a class="font-semibold hover:underline inline-flex items-center text-ink"
+                href="{{ route('domain.posts.index', ['name' => $blog->name]) }}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.25 8.75L7.75 12L11.25 15.25" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M16.25 8.75L12.75 12L16.25 15.25" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+
+                <span>Back</span>
+            </a>
+            <h1 class="mb-8 max-w-2xl font-display font-bold text-[2.5rem] lg:text-[5rem] leading-none text-ink">Tags
+            </h1>
             <div class="flex flex-wrap -mx-2">
 
                 @foreach ($tags->keys() as $letter)
@@ -22,17 +32,19 @@
                     <div class="flex flex-wrap items-center -mx-2">
                         @foreach ($tagsCollection as $tag)
                             <a href="{{ route('domain.tags.show', [
-    'name' => $blog->name,
-    'tag' => $tag->slug,
-]) }}"
-                                class="px-3 py-2 m-2 font-medium transition-all duration-200 border-2 border-blue-500 rounded-lg text-blue-500 hover:bg-blue-200">{{ $tag->name }}</a>
+                                'name' => $blog->name,
+                                'tag' => $tag->slug,
+                            ]) }}"
+                                class="px-3 py-2 m-2 font-medium transition-all duration-200 border-2 border-sunsetdark rounded-lg text-sunsetdark hover:bg-yellow-50">{{ $tag->name }}</a>
                         @endforeach
 
                     </div>
                 </div>
             @endforeach
 
-        </div>
-    </div>
+        </header>
 
-@endsection
+        <x-themes-footer />
+
+    </article>
+</x-themes-theme-layout>

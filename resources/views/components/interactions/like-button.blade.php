@@ -1,5 +1,5 @@
 <button {{ $isLiked ? 'disabled' : '' }}
-    class="flex items-center px-4 py-3 text-sm {{ $isLiked ? '' : 'bg-ink text-paper cursor-pointer hover:bg-opacity-80' }}"
+    class="flex items-center px-4 py-3 text-sm {{ $isLiked ? '' : 'bg-sunsetdark text-paper cursor-pointer hover:bg-opacity-80' }}"
     wire:click="like">
     <span class="mr-2">
         <svg class="{{ $isLiked ? 'text-ink' : 'text-paper' }} fill-current h-6" xmlns="http://www.w3.org/2000/svg"

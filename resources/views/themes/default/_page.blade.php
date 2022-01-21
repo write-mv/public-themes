@@ -1,41 +1,20 @@
-@extends('themes::themes.default._layout')
-@section('content')
-<article class="container px-4 py-24 mx-auto" itemid="#" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="w-full mx-auto mb-12 text-center md:w-2/3">
+<x-themes-theme-layout>
 
-    @if($page->is_english)
-    <h1 class="mb-3 text-4xl font-bold text-gray-800 md:leading-tight md:text-5xl" style="font-family: Poppins;">
-      {{$page->title}}
-    </h1>
-    @else
-    <h1 class="mb-3 text-3xl text-gray-800 md:leading-tight md:text-5xl aammu" dir="rtl">
-      {{$page->title}}
-    </h1>
-    @endif
+    <article class="max-w-4xl mx-auto px-6 pt-24 pb-16">
+        <header class="max-w-2xl mx-auto flex flex-col @if (!$page->is_english) items-end @endif">
+            <h1 class="mt-5 mb-8 text-[2.5rem] lg:text-[5rem] leading-none text-ink @if (!$page->is_english) aammu @else font-display font-bold @endif"  @if (!$post->is_english) dir="rtl" @endif>
+                {{ ucfirst($page->title) }}
+              </h1>
+            <p class="
+                flex items-center text-xs uppercase tracking-wider font-medium text-ink">
+                <span>{{ $page->published_date->format('Y-m-d') }}</span>
+                </p>
+        </header>
 
-    <p class="text-gray-700">
+        <main class="my-16 markup text-ink" @if (!$post->is_english) dir="rtl" @endif>
+            {!! $page->getRenderedHtmlContent() !!}
+        </main>
 
-      @if($page->is_english)
-      <time itemprop="datePublished dateModified" datetime="{{$page->published_date->format('F d, Y')}}"
-        pubdate>{{$page->published_date->format('F d, Y')}}</time>
-
-      @else
-      <time itemprop="datePublished dateModified" class="faseyha" dir="rtl">
-        {{$page->published_date->locale('dv')->isoFormat('Do MMMM YYYY')}}
-      </time>
-      @endif
-    </p>
-  </div>
-
-  @if($page->is_english)
-  <div class="mx-auto prose" style="font-family: Poppins;">
-    {!! $page->getRenderedHtmlContent() !!}
-  </div>
-  @else
-
-  <div class="mx-auto prose" style="font-family: typer;" dir="rtl">
-    {!! $page->getRenderedHtmlContent() !!}
-  </div>
-  @endif
-</article>
-@endsection
+        <x-themes-footer />
+    </article>
+</x-themes-theme-layout>
