@@ -2,7 +2,6 @@
 
 namespace WriteMv\Themes\Components;
 
-use App\Models\BlogPost;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;

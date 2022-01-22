@@ -20,10 +20,9 @@ return [
         //Root Components
         'last-seen' => Components\LastSeen::class,
 
-
         //Layout components
         'theme-layout' => Components\Layouts\ThemeLayout::class,
-        'footer' => Components\Layouts\Footer::class,
+        'footer'       => Components\Layouts\Footer::class,
     ],
 
     /*
