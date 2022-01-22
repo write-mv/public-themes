@@ -46,7 +46,7 @@
 
 
 
-        <main class="my-12 markup text-ink" @if (!$post->is_english) dir="rtl" @endif>
+        <main class="my-12 markup text-ink @if (!$post->is_english) typer @endif" @if (!$post->is_english) dir="rtl" @endif>
             {!! $post->getRenderedHtmlContent() !!}
         </main>
 
