@@ -26,7 +26,7 @@
                 <x-themes-last-seen :post="$post" />
                 </p>
 
-                <div class="text-sunsetdark mt-5">
+                <div class="text-sunsetdark my-5">
                     @foreach ($post->tags as $tag)
                         <a href="{{ route('domain.tags.show', ['name' => $blog->name, 'tag' => $tag->slug]) }}"
                             class="text-sm font-light hover:underline cursor-pointer @if (!$loop->first) ml-2 @endif">
