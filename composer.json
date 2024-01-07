@@ -17,15 +17,15 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/filesystem": "^9.0",
-        "illuminate/support": "^9.0",
-        "illuminate/view": "^9.0",
+        "illuminate/filesystem": "^10.0",
+        "illuminate/support": "^10.0",
+        "illuminate/view": "^10.0",
         "livewire/livewire": "^2.4",
         "nesbot/carbon": "^2.55",
         "romanzipp/laravel-seo": "^2.2"
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^8.0",
         "phpunit/phpunit": "^9.0"
     },
     "autoload": {
